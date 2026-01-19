@@ -44,10 +44,10 @@ export default function Header() {
               className="text-center"
             >
               <h1 className="text-2xl md:text-3xl font-serif font-bold text-primary tracking-wide">
-                Dubai SR
+                Dubai <span className="text-accent">SR</span>
               </h1>
-              <p className="text-[10px] md:text-xs text-muted-foreground font-sans tracking-[0.2em] uppercase">
-                Elegance in Every Thread
+              <p className="text-[10px] md:text-xs text-accent font-sans tracking-[0.2em] uppercase font-medium">
+                ✦ Elegance in Every Thread ✦
               </p>
             </motion.div>
           </Link>
