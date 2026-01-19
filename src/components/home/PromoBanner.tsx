@@ -23,8 +23,8 @@ export default function PromoBanner() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-center p-4 shadow-lg">
-              <span className="font-serif text-foreground font-bold text-lg leading-tight">
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center text-center p-4 shadow-lg border-4 border-gold-light">
+              <span className="font-serif text-white font-bold text-lg leading-tight drop-shadow-sm">
                 Up to 30% Off
               </span>
             </div>
@@ -66,9 +66,9 @@ export default function PromoBanner() {
                 { label: 'Mins', value: '34' },
                 { label: 'Secs', value: '56' },
               ].map((item) => (
-                <div key={item.label} className="text-center">
-                  <div className="w-14 h-14 bg-background rounded-lg flex items-center justify-center shadow-sm">
-                    <span className="font-serif text-xl font-bold text-foreground">
+                <div key={item.label} className="text-center group">
+                  <div className="w-14 h-14 bg-background rounded-lg flex items-center justify-center shadow-sm border border-gold/30 group-hover:border-gold transition-colors">
+                    <span className="font-serif text-xl font-bold text-accent">
                       {item.value}
                     </span>
                   </div>

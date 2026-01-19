@@ -38,8 +38,16 @@ export default function Hero() {
           >
             Elegance in
             <br />
-            <span className="text-primary">Every Thread</span>
+            <span className="text-primary">Every </span>
+            <span className="text-accent">Thread</span>
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="w-24 h-1 bg-gradient-to-r from-accent via-gold-light to-transparent mb-6"
+          />
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}

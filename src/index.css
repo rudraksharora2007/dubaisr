@@ -125,7 +125,7 @@
   }
 
   .card-luxury {
-    @apply bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300;
+    @apply bg-card border border-gold/20 shadow-sm hover:shadow-lg hover:border-gold/40 transition-all duration-300;
   }
 
   .text-gold {
@@ -146,6 +146,18 @@
 
   .gradient-rose {
     background: linear-gradient(135deg, hsl(340 82% 52%) 0%, hsl(340 70% 45%) 100%);
+  }
+
+  .gold-underline {
+    @apply relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-0.5 after:bg-gold;
+  }
+
+  .gold-border-left {
+    @apply border-l-4 border-gold pl-4;
+  }
+
+  .gold-divider {
+    @apply w-20 h-0.5 bg-gradient-to-r from-gold via-gold-light to-transparent mx-auto;
   }
 }
 

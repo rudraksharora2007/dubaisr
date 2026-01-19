@@ -18,9 +18,11 @@ export default function FeaturedProducts() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-sm font-sans text-accent font-medium tracking-[0.3em] uppercase"
+              className="text-sm font-sans text-accent font-medium tracking-[0.3em] uppercase flex items-center gap-2"
             >
+              <span className="w-8 h-px bg-accent" />
               Curated for You
+              <span className="w-8 h-px bg-accent" />
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -29,7 +31,7 @@ export default function FeaturedProducts() {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-4xl font-serif font-bold text-foreground mt-2"
             >
-              Featured Collection
+              Featured <span className="text-accent">Collection</span>
             </motion.h2>
           </div>
           <Button

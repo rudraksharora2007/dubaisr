@@ -9,25 +9,25 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-serif font-bold text-rose-light mb-2">
-              Dubai SR
+            <h3 className="text-2xl font-serif font-bold mb-2">
+              <span className="text-rose-light">Dubai</span> <span className="text-gold">SR</span>
             </h3>
-            <p className="text-xs tracking-[0.2em] text-muted mb-4 uppercase">
-              Elegance in Every Thread
+            <p className="text-xs tracking-[0.2em] text-gold mb-4 uppercase">
+              ✦ Elegance in Every Thread ✦
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Premium Indian ethnic fashion boutique offering exquisite stitched and
               unstitched suits from top designers.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="#" className="text-muted hover:text-rose-light transition-colors">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-muted hover:text-gold hover:border-gold transition-colors">
+                <Instagram className="h-4 w-4" />
               </a>
-              <a href="#" className="text-muted hover:text-rose-light transition-colors">
-                <Facebook className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-muted hover:text-gold hover:border-gold transition-colors">
+                <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" className="text-muted hover:text-rose-light transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-muted hover:text-gold hover:border-gold transition-colors">
+                <Twitter className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -75,19 +75,19 @@ export default function Footer() {
             <h4 className="font-sans font-semibold text-background mb-4">Get in Touch</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-muted">
-                <Phone className="h-4 w-4 text-rose-light" />
-                <a href="tel:8595371004" className="hover:text-rose-light transition-colors">
+                <Phone className="h-4 w-4 text-gold" />
+                <a href="tel:8595371004" className="hover:text-gold transition-colors">
                   +91 8595371004
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted">
-                <Mail className="h-4 w-4 text-rose-light" />
-                <a href="mailto:hello@dubaisr.com" className="hover:text-rose-light transition-colors">
+                <Mail className="h-4 w-4 text-gold" />
+                <a href="mailto:hello@dubaisr.com" className="hover:text-gold transition-colors">
                   hello@dubaisr.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted">
-                <MapPin className="h-4 w-4 text-rose-light mt-0.5" />
+                <MapPin className="h-4 w-4 text-gold mt-0.5" />
                 <span>Dubai SR Boutique, Fashion Street, Mumbai - 400001</span>
               </li>
             </ul>

@@ -13,9 +13,11 @@ export default function Categories() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-sm font-sans text-accent font-medium tracking-[0.3em] uppercase"
+            className="text-sm font-sans text-accent font-medium tracking-[0.3em] uppercase flex items-center justify-center gap-3"
           >
+            <span className="w-12 h-px bg-gradient-to-r from-transparent to-accent" />
             Browse by Category
+            <span className="w-12 h-px bg-gradient-to-l from-transparent to-accent" />
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -24,8 +26,9 @@ export default function Categories() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl font-serif font-bold text-foreground mt-2"
           >
-            Shop Our Collections
+            Shop Our <span className="text-accent">Collections</span>
           </motion.h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mt-4" />
         </div>
 
         {/* Categories Grid */}

@@ -38,8 +38,8 @@ export default function Features() {
               transition={{ delay: index * 0.1 }}
               className="flex flex-col items-center text-center"
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rose-light flex items-center justify-center mb-4">
-                <feature.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-gold-light to-rose-light flex items-center justify-center mb-4 border border-gold/30">
+                <feature.icon className="h-5 w-5 md:h-6 md:w-6 text-accent" />
               </div>
               <h3 className="font-serif font-semibold text-foreground mb-1">
                 {feature.title}

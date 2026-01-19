@@ -93,7 +93,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           </h3>
         </Link>
         <div className="mt-2 flex items-center gap-2">
-          <span className="font-sans font-semibold text-foreground">
+          <span className="font-sans font-semibold text-accent">
             {formatPrice(product.salePrice || product.price)}
           </span>
           {hasDiscount && (
