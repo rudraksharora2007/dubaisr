@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, Menu, X, Search, User, Heart } from 'lucide-react';
-import { useCart } from '@/contexts/CartContext';
+import { Menu, X, Search, User, Heart } from 'lucide-react';
 import { useWishlist } from '@/contexts/WishlistContext';
+import { CartDrawer } from '@/components/cart/CartDrawer';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
@@ -16,10 +16,8 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { getCartCount } = useCart();
   const { getWishlistCount } = useWishlist();
   const location = useLocation();
-  const cartCount = getCartCount();
   const wishlistCount = getWishlistCount();
 
   return (
@@ -90,18 +88,7 @@ export default function Header() {
             <button className="p-2 hover:text-primary transition-colors hidden md:block">
               <User className="h-5 w-5" />
             </button>
-            <Link to="/cart" className="p-2 hover:text-primary transition-colors relative">
-              <ShoppingBag className="h-5 w-5" />
-              {cartCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-sans"
-                >
-                  {cartCount}
-                </motion.span>
-              )}
-            </Link>
+            <CartDrawer />
           </div>
         </div>
       </div>
