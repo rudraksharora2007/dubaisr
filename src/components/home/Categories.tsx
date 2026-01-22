@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Shirt, Scissors, Gem, ShoppingBag, Sparkles } from 'lucide-react';
 import { categories } from '@/data/products';
+
+const iconMap: Record<string, React.ReactNode> = {
+  Shirt: <Shirt className="h-6 w-6" />,
+  Scissors: <Scissors className="h-6 w-6" />,
+  Gem: <Gem className="h-6 w-6" />,
+  ShoppingBag: <ShoppingBag className="h-6 w-6" />,
+  Sparkles: <Sparkles className="h-6 w-6" />,
+};
 
 export default function Categories() {
   return (
@@ -32,7 +40,7 @@ export default function Categories() {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {categories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -43,24 +51,37 @@ export default function Categories() {
             >
               <Link
                 to={`/shop?category=${category.slug}`}
-                className="group relative aspect-[3/4] block overflow-hidden rounded-lg"
+                className="group relative aspect-[3/4] block overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
               >
+                {/* Image */}
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                  <h3 className="font-serif text-lg md:text-xl font-semibold text-background mb-1">
+                
+                {/* Overlay with gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent group-hover:from-foreground/95 transition-all duration-500" />
+                
+                {/* Gold shimmer overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-gold/0 via-gold/20 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{ transitionDuration: '1s' }} />
+                
+                {/* Icon */}
+                <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-accent border border-gold/30 group-hover:bg-gold group-hover:text-white group-hover:border-gold transition-all duration-300 shadow-lg">
+                  {category.icon && iconMap[category.icon]}
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <h3 className="font-serif text-lg md:text-xl font-semibold text-background mb-1 group-hover:text-gold-light transition-colors duration-300">
                     {category.name}
                   </h3>
                   <p className="text-xs md:text-sm text-background/70 font-sans mb-3 hidden sm:block">
                     {category.description}
                   </p>
-                  <span className="inline-flex items-center text-sm font-sans text-background group-hover:text-rose-light transition-colors">
+                  <span className="inline-flex items-center text-sm font-sans text-background group-hover:text-gold transition-colors duration-300">
                     Shop Now
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
                   </span>
                 </div>
               </Link>

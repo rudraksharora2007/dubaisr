@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="text-rose-light">Dubai</span> <span className="text-gold">SR</span>
             </h3>
             <p className="text-xs tracking-[0.2em] text-gold mb-4 uppercase">
-              ✦ Elegance in Every Thread ✦
+              ✦ Where Tradition Meets Style ✦
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Premium Indian ethnic fashion boutique offering exquisite stitched and
