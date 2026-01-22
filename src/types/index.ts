@@ -27,6 +27,7 @@ export interface Category {
   slug: string;
   image: string;
   description?: string;
+  icon?: string;
 }
 
 export interface Coupon {

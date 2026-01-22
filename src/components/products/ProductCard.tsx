@@ -43,7 +43,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="group relative card-luxury rounded-lg overflow-hidden"
+      className="group relative card-luxury rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500"
     >
       {/* Image Container */}
       <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
@@ -51,8 +51,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <img
             src={product.images[0]}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
+          {/* Gold shimmer overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-gold/0 via-gold/15 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </Link>
 
         {/* Badges */}
@@ -78,10 +80,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         <div className="absolute top-3 right-3 flex flex-col gap-2">
           <button
             onClick={handleWishlistToggle}
-            className={`p-2 rounded-full transition-colors ${
+            className={`p-2.5 rounded-full transition-all duration-300 shadow-lg ${
               inWishlist 
-                ? 'bg-primary text-primary-foreground' 
-                : 'bg-background/90 hover:bg-background text-foreground opacity-0 group-hover:opacity-100'
+                ? 'bg-primary text-primary-foreground scale-110' 
+                : 'bg-background/95 hover:bg-gold hover:text-white text-foreground opacity-0 group-hover:opacity-100 hover:scale-110'
             }`}
           >
             <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
@@ -93,7 +95,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <Button
             onClick={() => addToCart(product)}
             disabled={product.stock === 0}
-            className="w-full btn-primary font-sans"
+            className="w-full btn-primary font-sans shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <ShoppingBag className="h-4 w-4 mr-2" />
             {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}

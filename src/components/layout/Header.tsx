@@ -40,14 +40,17 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex flex-col items-center">
             <motion.img
               src={logo}
               alt="Dubai SR Fashion"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="h-14 md:h-16 w-auto"
+              className="h-12 md:h-14 w-auto"
             />
+            <span className="text-[9px] tracking-[0.15em] text-accent uppercase hidden md:block">
+              Where Tradition Meets Style
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
