@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { Product } from '@/types';
 import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -13,10 +14,12 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const hasDiscount = product.salePrice && product.salePrice < product.price;
   const discountPercentage = hasDiscount
     ? Math.round(((product.price - product.salePrice!) / product.price) * 100)
     : 0;
+  const inWishlist = isInWishlist(product.id);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -24,6 +27,15 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       currency: 'INR',
       maximumFractionDigits: 0,
     }).format(price);
+  };
+
+  const handleWishlistToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (inWishlist) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
   };
 
   return (
@@ -63,9 +75,16 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         </div>
 
         {/* Quick Actions */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button className="p-2 bg-background/90 rounded-full hover:bg-background transition-colors">
-            <Heart className="h-4 w-4 text-foreground" />
+        <div className="absolute top-3 right-3 flex flex-col gap-2">
+          <button
+            onClick={handleWishlistToggle}
+            className={`p-2 rounded-full transition-colors ${
+              inWishlist 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-background/90 hover:bg-background text-foreground opacity-0 group-hover:opacity-100'
+            }`}
+          >
+            <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
           </button>
         </div>
 
