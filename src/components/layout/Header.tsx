@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X, Search, User, Heart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-import { Button } from '@/components/ui/button';
+import { useWishlist } from '@/contexts/WishlistContext';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -16,8 +17,10 @@ const navLinks = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { getCartCount } = useCart();
+  const { getWishlistCount } = useWishlist();
   const location = useLocation();
   const cartCount = getCartCount();
+  const wishlistCount = getWishlistCount();
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -37,19 +40,14 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center"
-            >
-              <h1 className="text-2xl md:text-3xl font-serif font-bold text-primary tracking-wide">
-                Dubai <span className="text-accent">SR</span>
-              </h1>
-              <p className="text-[10px] md:text-xs text-accent font-sans tracking-[0.2em] uppercase font-medium">
-                ✦ Elegance in Every Thread ✦
-              </p>
-            </motion.div>
+          <Link to="/" className="flex items-center">
+            <motion.img
+              src={logo}
+              alt="Dubai SR Fashion"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="h-14 md:h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -74,9 +72,18 @@ export default function Header() {
             <button className="p-2 hover:text-primary transition-colors hidden md:block">
               <Search className="h-5 w-5" />
             </button>
-            <button className="p-2 hover:text-primary transition-colors hidden md:block">
+            <Link to="/wishlist" className="p-2 hover:text-primary transition-colors hidden md:block relative">
               <Heart className="h-5 w-5" />
-            </button>
+              {wishlistCount > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-sans"
+                >
+                  {wishlistCount}
+                </motion.span>
+              )}
+            </Link>
             <button className="p-2 hover:text-primary transition-colors hidden md:block">
               <User className="h-5 w-5" />
             </button>
