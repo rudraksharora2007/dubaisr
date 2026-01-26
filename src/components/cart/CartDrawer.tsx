@@ -18,10 +18,22 @@ export const CartDrawer = () => {
 
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
-    if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
-      setIsOpen(false);
+    if (!checkoutUrl) {
+      console.warn('[CartDrawer] No checkoutUrl available');
+      return;
     }
+
+    // Debug visibility in case Shopify redirects unexpectedly
+    console.info('[CartDrawer] Opening checkoutUrl:', checkoutUrl);
+
+    // Prefer new tab, but fall back to same-tab navigation if popups are blocked.
+    const opened = window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.assign(checkoutUrl);
+      return;
+    }
+
+    setIsOpen(false);
   };
 
   const formatPrice = (amount: number) => {
