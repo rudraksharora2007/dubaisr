@@ -8,7 +8,8 @@ import {
   updateShopifyCartLine,
   removeLineFromShopifyCart,
   storefrontApiRequest,
-  CART_QUERY
+  CART_QUERY,
+  formatCheckoutUrl
 } from '@/lib/shopify';
 
 interface CartStore {
@@ -130,7 +131,11 @@ export const useCartStore = create<CartStore>()(
 
       clearCart: () => set({ items: [], cartId: null, checkoutUrl: null }),
       
-      getCheckoutUrl: () => get().checkoutUrl,
+      getCheckoutUrl: () => {
+        const url = get().checkoutUrl;
+        // Ensure checkout URL always has channel=online_store
+        return url ? formatCheckoutUrl(url) : null;
+      },
       
       getCartCount: () => get().items.reduce((sum, item) => sum + item.quantity, 0),
       
