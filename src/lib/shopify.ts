@@ -269,7 +269,7 @@ export const CART_LINES_REMOVE_MUTATION = `
 `;
 
 // Helper functions
-function formatCheckoutUrl(checkoutUrl: string): string {
+export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
     url.searchParams.set('channel', 'online_store');
